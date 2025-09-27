@@ -2,7 +2,16 @@ import { Card } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/CategoryCard.css'; // 👈 Thêm file CSS riêng
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
+import { MdConfirmationNumber } from "react-icons/md";
 const CategoryCard = ({ category }) => {
+    const { deleteCategory } = useContext(UserContext);
+    const onRemove = (id) => {
+        const result = window.confirm("Are you sure you want to remove this category?");
+        if (!result) return;
+        deleteCategory(id);
+    };
     return (
         <Card className="category-card h-100 d-flex flex-column">
             <button

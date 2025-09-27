@@ -1,27 +1,13 @@
-import { useEffect } from "react";
 import { useState } from "react";
-import { getAllCategoryApi } from "../../api/CategoryApi";
+import { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CategoryCard from "../../common/CategoryCard"
 import SearchBar from "../../layout/SearchBar";
+import UserContext from "../../context/UserContext";
 const CategoryDashboard = () => {
-  const [categories, setCategories] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const {categories, loading} = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterBy, setFilterBy] = useState("name");
-  useEffect(() => {
-    async function getAllCategory() {
-      try {
-        const response = await getAllCategoryApi();
-        console.log(response);
-        setCategories(response);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAllCategory();
-  }, [])
 
   if (loading) {
     return <p>Loading...</p>
