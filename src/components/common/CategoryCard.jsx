@@ -1,12 +1,18 @@
 import { Card } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/CategoryCard.css'; // 👈 Thêm file CSS riêng
+import '../styles/CategoryCard.css'; 
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
-import { MdConfirmationNumber } from "react-icons/md";
-const CategoryCard = ({ category }) => {
+import { BiEditAlt } from 'react-icons/bi';
+
+const CategoryCard = ({ category, editCategory}) => {
     const { deleteCategory } = useContext(UserContext);
+    
+    const handleEdit = (category) => {
+        console.log("vào hàm handleEdit");
+        editCategory(category);
+    }
     const onRemove = (id) => {
         const result = window.confirm("Are you sure you want to remove this category?");
         if (!result) return;
@@ -14,14 +20,44 @@ const CategoryCard = ({ category }) => {
     };
     return (
         <Card className="category-card h-100 d-flex flex-column">
-            <button
-                className="remove-btn"
-                style={{ position: "absolute", top: "10px", right: "10px", borderRadius: "30px" }}
-                onClick={() => onRemove(category.CategoryID)}
-                title="Remove this category"
-            >
-                <FaRegTrashAlt />
-            </button>
+            <div style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                display: "flex",
+                gap: "8px"
+            }}>
+                <button
+                    className="update-btn"
+                    style={{
+                        borderRadius: "30px",
+                        backgroundColor: "#f0f0f0",
+                        border: "none",
+                        padding: "5px 8px",
+                        cursor: "pointer"
+                    }}
+                    // onClick={handleShowUpdateModal}
+                    onClick={()=>handleEdit(category)}
+                    title="Update this category"
+                >
+                    <BiEditAlt color="#0d6efd" />
+                </button>
+
+                <button
+                    className="remove-btn"
+                    style={{
+                        borderRadius: "30px",
+                        backgroundColor: "#f0f0f0",
+                        border: "none",
+                        padding: "5px 8px",
+                        cursor: "pointer"
+                    }}
+                    onClick={() => onRemove(category.CategoryID)}
+                    title="Remove this category"
+                >
+                    <FaRegTrashAlt color="#dc3545" />
+                </button>
+            </div>
             <Card.Body className="d-flex flex-column">
                 <Card.Title className="category-title">{category.CategoryName}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
@@ -38,6 +74,7 @@ const CategoryCard = ({ category }) => {
                 </Card.Link>
             </Card.Body>
         </Card>
+        
     );
 };
 

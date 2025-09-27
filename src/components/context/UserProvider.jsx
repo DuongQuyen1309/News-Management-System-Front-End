@@ -5,6 +5,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [categories, setCategories] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     useEffect(() => {
         async function getAllCategory() {
@@ -36,6 +37,7 @@ const UserProvider = ({ children }) => {
         setCategories(newCategories);
     }
     
+    // update category but because not api so just update but will reload => initial value
     const updateCategory = (id, newCategory) => {
         const newCategories = categories.map((category) => {
             if (category.CategoryID === id) {
@@ -47,6 +49,14 @@ const UserProvider = ({ children }) => {
         setCategories(newCategories);       
     }
 
+    const handleShowUpdateModal = () => {
+        setShowUpdateModal(true);
+    }
+
+    const handleCloseUpdateModal = () => {
+        setShowUpdateModal(false);
+    }
+
     const contextValues = {
         user,
         login,
@@ -55,6 +65,9 @@ const UserProvider = ({ children }) => {
         deleteCategory,
         updateCategory,
         loading,
+        showUpdateModal,
+        handleShowUpdateModal,
+        handleCloseUpdateModal
     };
 
     return (
