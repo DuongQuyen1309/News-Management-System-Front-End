@@ -7,6 +7,7 @@ import InforSection from './components/layout/InforSection'
 import MainLayout from './components/layout/MainLayout'
 import UserProvider from './components/context/UserProvider'
 import HomePage from './components/pages/HomePage'
+import CategoryDashboard from './components/pages/category/CategoryDashboard'
 function App() {
   return (
     <BrowserRouter>
@@ -14,8 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<MainLayout />}>
-
             <Route index element={<HomePage />} />
+          </Route>
+          <Route path="/category" element={<MainLayout />}>
+            <Route index element={<CategoryDashboard />} />
           </Route>
         </Routes>
       </UserProvider>
