@@ -4,8 +4,18 @@ import { useState } from "react";
 const UserProvider = ({ children}) => {
     const [user, setUser] = useState(null);
 
+    const login = (validatedUser) => {
+        setUser(validatedUser);
+    }
+
+    const logout = () => {
+        setUser(null);
+    }
+
     const contextValues = {
         user,
+        login,
+        logout
     };
 
     return (

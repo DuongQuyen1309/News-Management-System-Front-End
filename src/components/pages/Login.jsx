@@ -2,6 +2,8 @@ import { Button, Form } from "react-bootstrap";
 import "../styles/Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../context/UserContext";
+import { useContext } from "react";
 const users = [
     {
         username: "Admin",
@@ -14,8 +16,12 @@ const Login = () => {
     const [password, setPassword] = useState(null);
     const [message, setMessage] = useState(null);
     const [isSucess, setIsSuccess] = useState(false);
-
+    const {login} = useContext(UserContext);
     const navigate = useNavigate();
+    function saveLoginInfor(infor){
+        login(infor);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setMessage(null);
@@ -29,6 +35,8 @@ const Login = () => {
         if (validatedUser){
             setMessage("Login Success");
             setIsSuccess(true);
+            saveLoginInfor(validatedUser);
+            console.log(validatedUser);
             navigate("/home");
         } else {
             setMessage("Login Failed");
