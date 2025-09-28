@@ -11,7 +11,7 @@ import UserContext from "../context/UserContext";
 const NewsArticleCard = ({ article }) => {
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [seletectNews, setSelectNews] = useState(null);
-    const { categories } = useContext(UserContext);
+    const { categories, deleteNews } = useContext(UserContext);
     const handleShow = (article) => {
         setShowDetailModal(true);
         setSelectNews(article);
@@ -21,6 +21,12 @@ const NewsArticleCard = ({ article }) => {
         setShowDetailModal(false);
     }
 
+    const onRemove = (id) => {
+        const result = window.confirm("Are you sure you want to remove this news?");
+        if (!result) return;
+        deleteNews(id);
+    };
+    
     return (
         <Card className="news-card h-100 d-flex flex-column">
             <div className="news-category-badge">
@@ -48,7 +54,6 @@ const NewsArticleCard = ({ article }) => {
                         cursor: "pointer"
                     }}
                     // onClick={handleShowUpdateModal}
-                    onClick={() => handleEdit(category)}
                     title="Update this category"
                 >
                     <BiEditAlt color="#0d6efd" />
@@ -63,7 +68,7 @@ const NewsArticleCard = ({ article }) => {
                         padding: "5px 8px",
                         cursor: "pointer"
                     }}
-                    onClick={() => onRemove(category.CategoryID)}
+                    onClick={() => onRemove(article.NewsArticleID)}
                     title="Remove this category"
                 >
                     <FaRegTrashAlt color="#dc3545" />
