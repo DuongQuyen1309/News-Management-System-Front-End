@@ -1,11 +1,243 @@
 {
-    "users":[
+    "systemAccounts": [
         {
-            "id":1,
-            "username": "Admin",
-            "password": "Admin",
-            "role": "admin",
-            "email": "admin@gmail.com"
+            "AccountID": 1,
+            "AccountName": "Admin",
+            "AccountEmail": "admin@gmail.com",
+            "AccountRole": "admin",
+            "AccountPassword": "Admin"
+        },
+        {
+            "AccountID": 2,
+            "AccountName": "JohnDoe",
+            "AccountEmail": "johndoe@example.com",
+            "AccountRole": "user",
+            "AccountPassword": "john123"
+        },
+        {
+            "AccountID": 3,
+            "AccountName": "JaneSmith",
+            "AccountEmail": "janesmith@example.com",
+            "AccountRole": "user",
+            "AccountPassword": "jane123"
+        },
+        {
+            "AccountID": 4,
+            "AccountName": "Manager1",
+            "AccountEmail": "manager1@company.com",
+            "AccountRole": "manager",
+            "AccountPassword": "manager123"
+        },
+        {
+            "AccountID": 5,
+            "AccountName": "SupportGuy",
+            "AccountEmail": "support@company.com",
+            "AccountRole": "support",
+            "AccountPassword": "support123"
+        }
+    ],
+    "categories": [
+        {
+            "CategoryID": "1",
+            "CategoryName": "Sport",
+            "CategoryDescription": "Activities that improve health and fitness, like running or football",
+            "ParentCategoryID": "2",
+            "isActive": true
+        },
+        {
+            "CategoryID": "2",
+            "CategoryName": "Outdoor",
+            "CategoryDescription": "Activities done outside, such as hiking or camping",
+            "ParentCategoryID": null,
+            "isActive": true
+        },
+        {
+            "CategoryID": "3",
+            "CategoryName": "Technology",
+            "CategoryDescription": "Products and tools related to computing, gadgets, and innovation",
+            "ParentCategoryID": null,
+            "isActive": true
+        },
+        {
+            "CategoryID": "4",
+            "CategoryName": "Electronics",
+            "CategoryDescription": "Devices such as TVs, speakers, and headphones",
+            "ParentCategoryID": "3",
+            "isActive": true
+        },
+        {
+            "CategoryID": "5",
+            "CategoryName": "Books",
+            "CategoryDescription": "Printed or digital materials for reading and learning",
+            "ParentCategoryID": null,
+            "isActive": true
+        },
+        {
+            "CategoryID": "6",
+            "CategoryName": "Fiction",
+            "CategoryDescription": "Novels and stories created from imagination",
+            "ParentCategoryID": "5",
+            "isActive": true
+        },
+        {
+            "CategoryID": "7",
+            "CategoryName": "Food & Beverage",
+            "CategoryDescription": "Items for cooking, eating, and drinking",
+            "ParentCategoryID": null,
+            "isActive": true
+        },
+        {
+            "CategoryID": "8",
+            "CategoryName": "Snacks",
+            "CategoryDescription": "Quick, ready-to-eat food like chips and cookies",
+            "ParentCategoryID": "7",
+            "isActive": true
+        },
+        {
+            "CategoryID": "9",
+            "CategoryName": "Fashion",
+            "CategoryDescription": "Clothing, shoes, and accessories",
+            "ParentCategoryID": null,
+            "isActive": true
+        },
+        {
+            "CategoryID": "10",
+            "CategoryName": "Shoes",
+            "CategoryDescription": "Footwear for casual, sport, or formal occasions",
+            "ParentCategoryID": "9",
+            "isActive": false
+        }
+    ],
+    "newsArticles": [
+        {
+            "NewsArticleID": 1,
+            "NewsTitle": "AI Revolution in 2025",
+            "Headline": "AI is changing industries at an unprecedented rate",
+            "CreatedDate": "2025-09-28T08:30:00",
+            "NewsContent": "Artificial Intelligence continues to revolutionize industries from healthcare to finance. Experts predict more breakthroughs in the next five years.",
+            "NewsSource": "TechCrunch",
+            "CategoryID": "1",
+            "NewsStatus": true,
+            "CreatedByID": 1,
+            "UpdatedByID": 1,
+            "ModifiedDate": "2025-09-28T08:30:00"
+        },
+        {
+            "NewsArticleID": 2,
+            "NewsTitle": "Stock Market Hits Record High",
+            "Headline": "Global markets show signs of recovery",
+            "CreatedDate": "2025-09-27T14:15:00",
+            "NewsContent": "The global stock market hit a record high this week, driven by strong corporate earnings and investor optimism.",
+            "NewsSource": "Bloomberg",
+            "CategoryID": "2",
+            "NewsStatus": true,
+            "CreatedByID": 2,
+            "UpdatedByID": 2,
+            "ModifiedDate": "2025-09-27T14:15:00"
+        },
+        {
+            "NewsArticleID": 3,
+            "NewsTitle": "New Smartphone Released",
+            "Headline": "Tech giant announces flagship model",
+            "CreatedDate": "2025-09-25T09:00:00",
+            "NewsContent": "The new smartphone features cutting-edge technology, a better camera, and improved battery life.",
+            "NewsSource": "The Verge",
+            "CategoryID": "3",
+            "NewsStatus": false,
+            "CreatedByID": 3,
+            "UpdatedByID": null,
+            "ModifiedDate": null
+        },
+        {
+            "NewsArticleID": 4,
+            "NewsTitle": "Climate Change Report Released",
+            "Headline": "Global temperatures rising faster than expected",
+            "CreatedDate": "2025-09-26T10:00:00",
+            "NewsContent": "The latest climate change report shows that global temperatures are rising faster than previous predictions.",
+            "NewsSource": "National Geographic",
+            "CategoryID": "4",
+            "NewsStatus": true,
+            "CreatedByID": 2,
+            "UpdatedByID": 4,
+            "ModifiedDate": "2025-09-26T12:00:00"
+        },
+        {
+            "NewsArticleID": 5,
+            "NewsTitle": "Local Sports Team Wins Championship",
+            "Headline": "Fans celebrate historic victory",
+            "CreatedDate": "2025-09-20T19:00:00",
+            "NewsContent": "The local team secured the championship after a thrilling final match that went into overtime.",
+            "NewsSource": "ESPN",
+            "CategoryID": "5",
+            "NewsStatus": true,
+            "CreatedByID": 5,
+            "UpdatedByID": 5,
+            "ModifiedDate": "2025-09-21T08:00:00"
+        },
+        {
+            "NewsArticleID": 6,
+            "NewsTitle": "Government Passes New Tax Bill",
+            "Headline": "Tax reform aims to support small businesses",
+            "CreatedDate": "2025-09-22T15:45:00",
+            "NewsContent": "The new tax bill offers several incentives for small and medium-sized businesses, effective next fiscal year.",
+            "NewsSource": "Reuters",
+            "CategoryID": "2",
+            "NewsStatus": true,
+            "CreatedByID": 1,
+            "UpdatedByID": null,
+            "ModifiedDate": null
+        },
+        {
+            "NewsArticleID": 7,
+            "NewsTitle": "Breakthrough in Cancer Research",
+            "Headline": "New treatment shows 90% success rate",
+            "CreatedDate": "2025-09-18T11:30:00",
+            "NewsContent": "Scientists have discovered a promising new treatment that significantly improves survival rates for certain types of cancer.",
+            "NewsSource": "Medical News Today",
+            "CategoryID": "6",
+            "NewsStatus": true,
+            "CreatedByID": 4,
+            "UpdatedByID": 4,
+            "ModifiedDate": "2025-09-19T09:00:00"
+        },
+        {
+            "NewsArticleID": 8,
+            "NewsTitle": "Travel Industry Rebounds",
+            "Headline": "Tourism numbers exceed pre-pandemic levels",
+            "CreatedDate": "2025-09-24T08:00:00",
+            "NewsContent": "Tourism and travel industries are booming as travelers return to international destinations.",
+            "NewsSource": "BBC Travel",
+            "CategoryID": "7",
+            "NewsStatus": true,
+            "CreatedByID": 2,
+            "UpdatedByID": 3,
+            "ModifiedDate": "2025-09-24T10:00:00"
+        },
+        {
+            "NewsArticleID": 9,
+            "NewsTitle": "Major Cyberattack Discovered",
+            "Headline": "Hackers target financial institutions",
+            "CreatedDate": "2025-09-23T16:20:00",
+            "NewsContent": "A large-scale cyberattack has been detected, affecting multiple banks worldwide. Authorities are investigating.",
+            "NewsSource": "Wired",
+            "CategoryID": "8",
+            "NewsStatus": false,
+            "CreatedByID": 5,
+            "UpdatedByID": null,
+            "ModifiedDate": null
+        },
+        {
+            "NewsArticleID": 10,
+            "NewsTitle": "SpaceX Successfully Launches Mission",
+            "Headline": "Rocket delivers satellites to orbit",
+            "CreatedDate": "2025-09-19T07:00:00",
+            "NewsContent": "SpaceX successfully launched its Falcon 9 rocket, delivering a payload of satellites into low-Earth orbit.",
+            "NewsSource": "Space.com",
+            "CategoryID": "9",
+            "NewsStatus": true,
+            "CreatedByID": 3,
+            "UpdatedByID": 1,
+            "ModifiedDate": "2025-09-19T12:00:00"
         }
     ]
 }
