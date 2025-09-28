@@ -44,12 +44,13 @@ const CategoryCreationModal = ({ showModal, handlecloseModal }) => {
                                 name="CategoryName"
                                 onChange={handleChange} />
                         </Form.Group>
-
+                        
+                        {/* //TODO */}
                         <Form.Group as={Col} controlId="formGridPassword">
                             <Form.Label>Parent Category ID</Form.Label>
                             <Form.Control type="text"
                                 name="ParentCategoryID"
-                                readOnly />
+                                onChange={handleChange} />
                         </Form.Group>
                     </Row>
 

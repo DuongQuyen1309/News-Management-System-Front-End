@@ -4,14 +4,18 @@ import UserContext from "../../context/UserContext";
 import NewsArticleCard from "../../common/NewsArticleCard";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import NewsSearchBar from "../../layout/NewsSearchBar";
+import NewsCreationModal from "../../common/NewsCreationModal"
 const NewsDashboard = () => {
     const { user, newsLoading, news, categories } = useContext(UserContext);
+    const [showCreateModal, setShowCreateModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [filterBy, setFilterBy] = useState("title");
+    const handleShowCreateModal = () => setShowCreateModal(true);
+    const handleCloseCreateModal = () => setShowCreateModal(false);
     const navigate = useNavigate();
-    // if (!user) {
-    //     navigate("/");
-    // }
+    if (!user) {
+        navigate("/");
+    }
     const getCategoryNameByid = (article) => {
         const categoryName = categories.find((category) => {
             if (category.CategoryID === article.CategoryID)
@@ -43,11 +47,11 @@ const NewsDashboard = () => {
         return (
             <Container className="mt-5">
                 <div className="d-flex justify-content-end">
-                    <Button className="mx-2" style={{ backgroundColor: "#0a4e7bff" }} >Create News</Button>
+                    <Button className="mx-2" style={{ backgroundColor: "#0a4e7bff" }} onClick={handleShowCreateModal}>Create News</Button>
                     <NewsSearchBar searchTerm={searchTerm}
                         onSearchChange={setSearchTerm}
                         filterBy={filterBy}
-                        onFilterChange={setFilterBy}/>
+                        onFilterChange={setFilterBy} />
                 </div>
                 <h2>News Dashboard</h2>
                 <Row>
@@ -59,6 +63,7 @@ const NewsDashboard = () => {
                         )
                     })}
                 </Row>
+                <NewsCreationModal showModal={showCreateModal} handlecloseModal={handleCloseCreateModal} />
             </Container>
         )
     }

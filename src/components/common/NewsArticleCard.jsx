@@ -198,7 +198,7 @@ const NewsArticleCard = ({ article }) => {
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>Status</Form.Label>
                                 <Form.Select
-                                    name="isActive"
+                                    name="NewsStatus"
                                     value={formData.NewsStatus ? "true" : "false"}
                                     onChange={handleChange}
                                 >
