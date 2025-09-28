@@ -13,7 +13,6 @@ const AccountsSearchBar = ({ searchTerm, onSearchChange, filterBy = "title", onF
   return (
     <div className="search-bar-wrapper">
       <InputGroup>
-        {/* Dropdown chọn kiểu lọc */}
         <Form.Select
           value={filterBy}
           onChange={(e) => handleKindToFilter(e.target.value)}
@@ -24,7 +23,6 @@ const AccountsSearchBar = ({ searchTerm, onSearchChange, filterBy = "title", onF
           <option value="role">By Role</option>
         </Form.Select>
 
-        {/* Ô search */}
         <InputGroup.Text>
           <FaSearch />
         </InputGroup.Text>

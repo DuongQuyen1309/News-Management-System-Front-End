@@ -10,7 +10,6 @@ const CategoryCard = ({ category, editCategory}) => {
     const { deleteCategory } = useContext(UserContext);
     
     const handleEdit = (category) => {
-        console.log("vào hàm handleEdit");
         editCategory(category);
     }
     const onRemove = (id) => {

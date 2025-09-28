@@ -19,7 +19,6 @@ const NewsArticleCard = ({ article }) => {
 
     useEffect(() => {
         setFormData(article);
-        console.log(" dang lay cua", formData);
     }, [article]);
 
     const handleShow = (article) => {
@@ -38,7 +37,6 @@ const NewsArticleCard = ({ article }) => {
     };
 
     const handleEdit = () => {
-        console.log("vào hàm handleEdit NEWS");
         setUpdateNews(article);
         setUpdateModal(true);
     }
@@ -52,8 +50,8 @@ const NewsArticleCard = ({ article }) => {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: name === "isActive" ? value === "true" : value }));
     };
 
-    const handleSubmit = (id, data) => {
-        navigate("/news");
+    const handleSubmit = (e, id, data) => {
+        // not real api BE to update
     }
     return (
         <Card className="news-card h-100 d-flex flex-column">
@@ -154,7 +152,7 @@ const NewsArticleCard = ({ article }) => {
                     <Modal.Title>Update News ID: {updateNews.NewsArticleID}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={() => { handleSubmit(formData.NewsArticleID, formData) }}>
+                    <Form onSubmit={(e) => { handleSubmit(e, formData.NewsArticleID, formData) }}>
                         <Form.Group className="mb-3" controlId="formGridAddress1">
                             <Form.Label>Title</Form.Label>
                             <Form.Control

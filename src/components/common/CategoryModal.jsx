@@ -7,12 +7,9 @@ import { useNavigate } from "react-router-dom";
 const CategoryModal = ({ category, showModal, handlecloseModal, handleSelectedCategory }) => {
 
     const [formData, setFormData] = useState(category);
-    const { categories, updateCategory } = useContext(UserContext);
-    const navigate = useNavigate();
     // Cập nhật khi category thay đổi (khi mở modal mới)
     useEffect(() => {
         setFormData(category);
-        console.log(" dang lay cua", formData);
     }, [category]);
 
     const handleChange = (e) => {
@@ -21,8 +18,7 @@ const CategoryModal = ({ category, showModal, handlecloseModal, handleSelectedCa
     };
 
     const handleSubmit = (id, data) => {
-        updateCategory(id, data);
-        navigate("/category");
+        //not real api BE to submit
     }
 
     const closeModal = () => {

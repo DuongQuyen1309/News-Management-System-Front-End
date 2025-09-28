@@ -22,10 +22,9 @@ const CategoryDashboard = () => {
   const handleShow = (category) => {
     setSelectedCategory(category);
     handleShowUpdateModal();
-    console.log("vào handle show cua dash");
   }
   if (!user) {
-    navigate("/");
+    navigate("/category");
   }
 
   if (loading) {

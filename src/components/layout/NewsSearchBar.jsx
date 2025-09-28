@@ -13,7 +13,6 @@ const NewsSearchBar = ({ searchTerm, onSearchChange, filterBy = "title", onFilte
   return (
     <div className="search-bar-wrapper">
       <InputGroup>
-        {/* Dropdown chọn kiểu lọc */}
         <Form.Select
           value={filterBy}
           onChange={(e) => handleKindToFilter(e.target.value)}
@@ -25,7 +24,6 @@ const NewsSearchBar = ({ searchTerm, onSearchChange, filterBy = "title", onFilte
           <option value="category">By Category</option>
         </Form.Select>
 
-        {/* Ô search */}
         <InputGroup.Text>
           <FaSearch />
         </InputGroup.Text>

@@ -5,14 +5,33 @@ import { Container, Table, Button } from "react-bootstrap";
 import { BiEditAlt } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import AccountSearchBar from "../../layout/AccountSearchBar";
+import AccountUpdateModal from "../../common/AccountUpdateModal";
+import AccountCreationModal from "../../common/AccountCreationModal";
 const AccountDashboard = () => {
     const { accounts, user, accountLoading, deleteAccounts } = useContext(UserContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [filterBy, setFilterBy] = useState("name");
-    // const navigate = useNavigate();
-    // if (!user) {
-    //     navigate("/");
-    // }
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showCreateModal, setShowCreateModal] = useState(false);
+
+    const navigate = useNavigate();
+    if (!user) {
+        navigate("/");
+    }
+    const [selectedAccount, setSelectedAccount] = useState(null);
+
+    const handleShowCreateModal = () => setShowCreateModal(true);
+    const handleCloseCreateModal = () => setShowCreateModal(false);
+
+    const handleShowUpdateModal = (account) => {
+        setShowUpdateModal(true);
+        setSelectedAccount(account);
+    }
+
+    const handleCloseUpdateModal = () => {
+        setShowUpdateModal(false);
+        setSelectedAccount(null);
+    }
     const onRemove = (id) => {
         const result = window.confirm("Are you sure you want to remove this news?");
         if (!result) return;
@@ -38,7 +57,7 @@ const AccountDashboard = () => {
         return (
             <Container className="mt-5">
                 <div className="d-flex justify-content-end">
-                    <Button className="mx-2" style={{ backgroundColor: "#0a4e7bff" }}>Create Account</Button>
+                    <Button className="mx-2" style={{ backgroundColor: "#0a4e7bff" }} onClick={handleShowCreateModal}>Create Account</Button>
                     <AccountSearchBar searchTerm={searchTerm}
                         onSearchChange={setSearchTerm}
                         filterBy={filterBy}
@@ -52,7 +71,7 @@ const AccountDashboard = () => {
                             <th>Account Name</th>
                             <th>Account Email</th>
                             <th>AccountRole</th>
-                            <th>Actions</th>
+                            <th style={{ width: "10%" }}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,16 +86,16 @@ const AccountDashboard = () => {
                                         <Button
                                             style={{ background: "#0a4e7bff", border: "none" }}
                                             size="sm"
-                                            onClick={() => handleEdit(account)}
+                                            onClick={() => handleShowUpdateModal(account)}
                                         >
-                                            <BiEditAlt /> Sửa
+                                            <BiEditAlt /> Edit
                                         </Button>
                                         <Button
                                             variant="danger"
                                             size="sm"
                                             onClick={() => onRemove(account.AccountID)}
                                         >
-                                            <FaRegTrashAlt /> Xóa
+                                            <FaRegTrashAlt /> Delete
                                         </Button>
                                     </td>
                                 </tr>
@@ -84,6 +103,17 @@ const AccountDashboard = () => {
                         }
                     </tbody>
                 </Table>
+                {selectedAccount && (
+                    <AccountUpdateModal
+                        showModal={showUpdateModal}
+                        account={selectedAccount}
+                        handlecloseModal={handleCloseUpdateModal}
+                    />
+                )}
+                <AccountCreationModal
+                    showModal={showCreateModal}
+                    handlecloseModal={handleCloseCreateModal}
+                />
             </Container>
         );
     }

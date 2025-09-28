@@ -4,7 +4,11 @@ import { getAllCategoryApi } from "../api/CategoryApi";
 import { getAllNewsApi } from "../api/NewApi";
 import { getAllAccountApi } from "../api/AccountApi"
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const storedUser = localStorage.getItem("user");
+        return storedUser ? JSON.parse(storedUser) : null;
+    });
+
     const [categories, setCategories] = useState(null);
     const [news, setNews] = useState([]);
     const [accounts, setAccounts] = useState([]);
@@ -56,10 +60,12 @@ const UserProvider = ({ children }) => {
 
     const login = (validatedUser) => {
         setUser(validatedUser);
+         localStorage.setItem("user", JSON.stringify(validatedUser));
     }
 
     const logout = () => {
         setUser(null);
+         localStorage.removeItem("user");
     }
 
     const deleteCategory = (id) => {
@@ -71,16 +77,6 @@ const UserProvider = ({ children }) => {
     }
 
     // update category but because not api so just update but will reload => initial value
-    const updateCategory = (id, newCategory) => {
-        const newCategories = categories.map((category) => {
-            if (category.CategoryID === id) {
-                return newCategory;
-            } else {
-                return category;
-            }
-        })
-        setCategories(newCategories);
-    }
 
     const deleteNews = (id) => {
         const newNews = news.filter((item) => {
@@ -124,7 +120,6 @@ const UserProvider = ({ children }) => {
         logout,
         categories,
         deleteCategory,
-        updateCategory,
         news,
         deleteNews,
         updateNew,

@@ -15,9 +15,8 @@ const CategoryCreationModal = ({ showModal, handlecloseModal }) => {
         const { name, value } = e.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: name === "isActive" ? value === "true" : value }));
     };
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         // not have api so it doesn't update new category
-        navigate("/category");
     }
     return (
         <Modal show={showModal} onHide={handlecloseModal} size="lg" >
@@ -25,7 +24,7 @@ const CategoryCreationModal = ({ showModal, handlecloseModal }) => {
                 <Modal.Title>Create New Category</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={() => { handleSubmit }}>
+                <Form onSubmit={(e) => { handleSubmit(e) }}>
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Status</Form.Label>

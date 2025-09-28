@@ -19,9 +19,8 @@ const NewsCreationModal = ({ showModal, handlecloseModal }) => {
         const { name, value } = e.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: name === "isActive" ? value === "true" : value }));
     };
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         // not have api so it doesn't update new category
-        navigate("/news");
     }
 
     const getAllCategoryIDs = () => {
@@ -43,7 +42,7 @@ const NewsCreationModal = ({ showModal, handlecloseModal }) => {
                 <Modal.Title>Create News</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={() => { handleSubmit }}>
+                <Form onSubmit={(e) => { handleSubmit(e) }}>
                     <Form.Group className="mb-3" controlId="formGridTitle">
                         <Form.Label>Title</Form.Label>
                         <Form.Control
