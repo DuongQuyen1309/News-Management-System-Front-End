@@ -76,7 +76,7 @@ const CategoryModal = ({ category, showModal, handlecloseModal, handleSelectedCa
                             onChange={handleChange} />
                     </Form.Group>
 
-                    <Button vstyle={{backgroundColor: "#0a4e7bff"}} type="submit">
+                    <Button style={{backgroundColor: "#0a4e7bff"}} type="submit">
                         Submit
                     </Button>
                 </Form>
