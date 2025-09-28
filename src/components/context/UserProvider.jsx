@@ -2,12 +2,15 @@ import UserContext from "./UserContext";
 import { useState, useEffect } from "react";
 import { getAllCategoryApi } from "../api/CategoryApi";
 import { getAllNewsApi } from "../api/NewApi";
+import { getAllAccountApi } from "../api/AccountApi"
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [categories, setCategories] = useState(null);
     const [news, setNews] = useState([]);
+    const [accounts, setAccounts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newsLoading, setNewsLoading] = useState(true);
+    const [accountLoading, setAccountLoading] = useState(true);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     useEffect(() => {
@@ -35,7 +38,20 @@ const UserProvider = ({ children }) => {
             }
         };
         getAllNews();
-        console.log("news", news);
+    }, [])
+
+    useEffect(() => {
+        async function getAllAccounts() {
+            try {
+                const response = await getAllAccountApi();
+                console.log("response new", response);
+                setAccounts(response);
+                setAccountLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getAllAccounts();
     }, [])
 
     const login = (validatedUser) => {
@@ -86,6 +102,14 @@ const UserProvider = ({ children }) => {
         setNews(newNews);
     }
 
+    const deleteAccounts = (id) => {
+        const newAccounts = accounts.filter((item) => {
+            if (item.AccountID !== id)
+                return item
+        })
+        setAccounts(newAccounts);
+    }
+
     const handleShowUpdateModal = () => {
         setShowUpdateModal(true);
     }
@@ -104,6 +128,9 @@ const UserProvider = ({ children }) => {
         news,
         deleteNews,
         updateNew,
+        accounts,
+        deleteAccounts,
+        accountLoading,
         newsLoading,
         loading,
         showUpdateModal,

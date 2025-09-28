@@ -9,6 +9,7 @@ import UserProvider from './components/context/UserProvider'
 import HomePage from './components/pages/HomePage'
 import CategoryDashboard from './components/pages/category/CategoryDashboard'
 import NewsDashboard from './components/pages/news/NewsDashboard'
+import AccountDashboard from './components/pages/account/AccountDashboard'
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,10 @@ function App() {
 
           <Route path="/news" element={<MainLayout />}>
             <Route index element={<NewsDashboard />} />
+          </Route>
+
+          <Route path="/users" element={<MainLayout />}>
+            <Route index element={<AccountDashboard />} />
           </Route>
         </Routes>
       </UserProvider>

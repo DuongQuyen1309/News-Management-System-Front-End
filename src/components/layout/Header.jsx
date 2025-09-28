@@ -27,7 +27,7 @@ const Header = () => {
                         <Nav.Link as={Link} to="/home" className="mx-2 fw-medium">Dashboard</Nav.Link>
                         <Nav.Link as={Link} to="/category" className="mx-2 fw-medium">Category</Nav.Link>
                         <Nav.Link as={Link} to="/news" className="mx-2 fw-medium">News</Nav.Link>
-                        <Nav.Link href="#action2" className="mx-2 fw-medium">Users</Nav.Link>
+                        <Nav.Link as={Link} to="/users" className="mx-2 fw-medium">Users</Nav.Link>
                         <Nav.Link href="#action2" className="mx-2 fw-medium">Settings</Nav.Link>
                     </Nav>
                     <div className="d-flex">
