@@ -1,7 +1,7 @@
-const BASE_URL_CATEGORY = "http://localhost:3333/categories";
-export const getAllCategoryApi = async () => {
+const BASE_URL_NEWS = "http://localhost:3333/newsArticles";
+export const getAllNewsApi = async () => {
     try {
-        const response = await fetch(BASE_URL_CATEGORY);
+        const response = await fetch(BASE_URL_NEWS);
         if(!response.ok){
             return new Error(`HTTP error with status: ${response.statusText}`);
         }

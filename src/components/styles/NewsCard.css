@@ -1,0 +1,86 @@
+.news-card {
+  position: relative;
+  border: none;
+  border-radius: 1rem; /* Bo góc mềm */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+}
+
+.news-card:hover {
+  transform: translateY(-5px); /* Hover nổi lên */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.news-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+   min-height: 3rem;
+}
+
+.news-card .card-subtitle {
+  min-height: 1.5rem; /* giữ chỗ subtitle để các card đều nhau */
+}
+
+.news-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+  max-height: 80px;
+  overflow: hidden;
+}
+
+
+.status-badge.active {
+  background-color: #bdd2ea;
+  color: #0a4e7bff;
+}
+
+.status-badge.inactive {
+  background-color: #eaada7;
+  color: #c62828;
+}
+.detail-link {
+  display: inline-block;
+  width: 80%; 
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 50px;
+  background-color: #0a4e7bff;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-left: 0 !important;
+}
+
+.detail-link:hover {
+  background-color: #083856;
+  transform: scale(1.03);
+}
+
+.status-badge {
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+}
+
+.news-category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #0a4e7bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

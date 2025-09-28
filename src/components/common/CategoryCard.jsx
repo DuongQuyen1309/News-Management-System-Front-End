@@ -59,7 +59,7 @@ const CategoryCard = ({ category, editCategory}) => {
                 </button>
             </div>
             <Card.Body className="d-flex flex-column">
-                <Card.Title className="category-title">{category.CategoryName}</Card.Title>
+                <Card.Title className="category-title ">{category.CategoryName}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                     ID: {category.CategoryID}
                 </Card.Subtitle>

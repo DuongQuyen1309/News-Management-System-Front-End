@@ -8,17 +8,24 @@ import MainLayout from './components/layout/MainLayout'
 import UserProvider from './components/context/UserProvider'
 import HomePage from './components/pages/HomePage'
 import CategoryDashboard from './components/pages/category/CategoryDashboard'
+import NewsDashboard from './components/pages/news/NewsDashboard'
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
         <Routes>
           <Route path="/" element={<Login />} />
+
           <Route path="/home" element={<MainLayout />}>
             <Route index element={<HomePage />} />
           </Route>
+
           <Route path="/category" element={<MainLayout />}>
             <Route index element={<CategoryDashboard />} />
+          </Route>
+
+          <Route path="/news" element={<MainLayout />}>
+            <Route index element={<NewsDashboard />} />
           </Route>
         </Routes>
       </UserProvider>
